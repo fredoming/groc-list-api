@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryListAPI", "GroceryListAPI\GroceryListAPI.csproj", "{673C27B2-8F3D-432D-8501-6BA74B205770}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A91C2EC3-FC79-441B-A476-D485995F35C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{673C27B2-8F3D-432D-8501-6BA74B205770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673C27B2-8F3D-432D-8501-6BA74B205770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673C27B2-8F3D-432D-8501-6BA74B205770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673C27B2-8F3D-432D-8501-6BA74B205770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91C2EC3-FC79-441B-A476-D485995F35C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91C2EC3-FC79-441B-A476-D485995F35C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91C2EC3-FC79-441B-A476-D485995F35C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91C2EC3-FC79-441B-A476-D485995F35C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A689039C-E67E-4B2A-8E02-12B12A66FD82}
+	EndGlobalSection
+EndGlobal

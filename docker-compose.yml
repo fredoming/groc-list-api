@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  grocerylistapi:
+    image: ${DOCKER_REGISTRY-}grocerylistapi
+    build:
+      context: .
+      dockerfile: GroceryListAPI/Dockerfile
+    depends_on:
+      - "my-db"
+  my-db:
+    container_name: my-db
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: grocerylist
+      MYSQL_USER: grocerylist
+      MYSQL_PASSWORD: grocerylist
+    ports:
+      - "3306:3306"
+    volumes:
+      - my_volume:/var/lib/mysql
+
+volumes:
+  my_volume:
+    external: true
