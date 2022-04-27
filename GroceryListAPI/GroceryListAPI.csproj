@@ -20,6 +20,11 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.16">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.16" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,11 +32,16 @@
     <None Remove="Models\Configuration\" />
     <None Remove="Infrastructure\" />
     <None Remove="Infrastructure\Database\" />
+    <None Remove="Controllers\odata\" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Models\Configuration\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Infrastructure\Database\" />
+    <Folder Include="Controllers\odata\" />
   </ItemGroup>
 </Project>

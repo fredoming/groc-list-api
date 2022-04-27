@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using GroceryListAPI.Infrastructure.Database;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace GroceryListAPI.Infrastructure
 {
