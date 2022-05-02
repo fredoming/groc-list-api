@@ -38,11 +38,12 @@ namespace GroceryListAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddAuthentication().AddGoogle(googleOptions =>
-      {
-        googleOptions.ClientId = Configuration["GoogleAuth:ClientId"];
-        googleOptions.ClientSecret = Configuration["GoogleAuth:ClientSecret"];
-      });
+      //TODO: connect to google OAUTH 
+      //services.AddAuthentication().AddGoogle(googleOptions =>
+      //{
+      //  googleOptions.ClientId = Configuration["GoogleAuth:ClientId"];
+      //  googleOptions.ClientSecret = Configuration["GoogleAuth:ClientSecret"];
+      //});
 
       services.AddControllers();
 
@@ -117,6 +118,8 @@ namespace GroceryListAPI
       app.UseCors();
       app.UseRouting();
 
+
+      // had to leave api open due to front end odata lib not allowing for token inclustion on headers
       //app.UseAuthorization();
       //app.UseAuthentication();
 
