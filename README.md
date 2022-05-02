@@ -12,6 +12,7 @@
 - When in Visual Studio make sure Docker extension is installed 
 - Run `docker volume create pg_volume` if it does not exists. Use `docker volume ls` to determine if the volume needs to be created.
 - Run project with `docker-compose up` or execute debugging in Visual Studio 
+- The project will run on localhost:5000 so ensure that is available or change the port in the docker compose file. 
 
 ## Dev Db 
 - If running form docker, an instance of postgres will automatically be provided. This database will be created and reused when running through docker-compose. 
