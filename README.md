@@ -13,3 +13,13 @@
 - Run `docker volume create pg_volume` if it does not exists. Use `docker volume ls` to determine if the volume needs to be created.
 - Run project with `docker-compose up` or execute debugging in Visual Studio 
 
+## Dev Db 
+- If running form docker, an instance of postgres will automatically be provided. This database will be created and reused when running through docker-compose. 
+ - Below are commands to wipe the db
+ 
+ 
+ ```
+ DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+GRANT ALL ON SCHEMA public TO postgres;
+ ```
