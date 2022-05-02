@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GroceryListAPI.Infrastructure.Database
 {
@@ -11,6 +12,9 @@ namespace GroceryListAPI.Infrastructure.Database
 
     public string Name { get; set; }
 
-    ICollection<GroceryItem> GroceryItems { get; set; }
+    [ForeignKey("UserId")]
+    public Guid UserId { get; set; }
+
+    public ICollection<GroceryItem> GroceryItems { get; set; }
   }
 }

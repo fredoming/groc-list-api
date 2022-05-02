@@ -3,15 +3,17 @@ using System;
 using GroceryListAPI.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace GroceryListAPI.Migrations
 {
     [DbContext(typeof(GroceryListDbContext))]
-    partial class GroceryListDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220427231113_FixFkGrocList")]
+    partial class FixFkGrocList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,10 +44,6 @@ namespace GroceryListAPI.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("done_tf");
 
-                    b.Property<Guid>("GroceryListId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("grocery_list_id");
-
                     b.Property<string>("ItemName")
                         .HasColumnType("text")
                         .HasColumnName("item_name");
@@ -64,9 +62,6 @@ namespace GroceryListAPI.Migrations
 
                     b.HasKey("GroceryItemId")
                         .HasName("pk_grocery_items");
-
-                    b.HasIndex("GroceryListId")
-                        .HasDatabaseName("ix_grocery_items_grocery_list_id");
 
                     b.ToTable("grocery_items");
                 });
@@ -173,16 +168,6 @@ namespace GroceryListAPI.Migrations
                     b.ToTable("users");
                 });
 
-            modelBuilder.Entity("GroceryListAPI.Infrastructure.Database.GroceryItem", b =>
-                {
-                    b.HasOne("GroceryListAPI.Infrastructure.Database.GroceryList", null)
-                        .WithMany("GroceryItems")
-                        .HasForeignKey("GroceryListId")
-                        .HasConstraintName("fk_grocery_items_grocery_lists_grocery_list_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("GroceryListAPI.Infrastructure.Database.GroceryList", b =>
                 {
                     b.HasOne("GroceryListAPI.Infrastructure.Database.User", null)
@@ -191,11 +176,6 @@ namespace GroceryListAPI.Migrations
                         .HasConstraintName("fk_grocery_lists_users_user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("GroceryListAPI.Infrastructure.Database.GroceryList", b =>
-                {
-                    b.Navigation("GroceryItems");
                 });
 
             modelBuilder.Entity("GroceryListAPI.Infrastructure.Database.User", b =>

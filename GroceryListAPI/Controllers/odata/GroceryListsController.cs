@@ -13,11 +13,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GroceryListAPI.Controllers.odata
 {
-  public class GroceryItemController : ODataController
+  public class GroceryListsController : ODataController
   {
     private readonly GroceryListDbContext _dbContext;
 
-    public GroceryItemController(GroceryListDbContext dbContext)
+    public GroceryListsController(GroceryListDbContext dbContext)
     {
       _dbContext = dbContext;
     }
@@ -25,14 +25,14 @@ namespace GroceryListAPI.Controllers.odata
     [EnableQuery]
     public IActionResult Get()
     {
-      return Ok(_dbContext.GroceryItems);
+      return Ok(_dbContext.GroceryLists);
 
     }
 
     [EnableQuery]
     public IActionResult Get(Guid key)
     {
-      var entity = _dbContext.GroceryItems.Where(u => u.GroceryItemId == key);
+      var entity = _dbContext.GroceryLists.Where(u => u.GroceryListId == key);
       if (!entity.Any())
       {
         return NotFound();
@@ -41,14 +41,14 @@ namespace GroceryListAPI.Controllers.odata
       return Ok(SingleResult.Create(entity));
     }
 
-    public IActionResult Patch([FromODataUri] Guid key, [FromBody] Delta<GroceryItem> model)
+    public IActionResult Patch([FromODataUri] Guid key, [FromBody] Delta<GroceryList> model)
     {
       if (!ModelState.IsValid)
       {
         return BadRequest(ModelState);
       }
 
-      var entity = _dbContext.GroceryItems.Where(u => u.GroceryItemId == key).FirstOrDefault();
+      var entity = _dbContext.GroceryLists.Where(u => u.GroceryListId == key).FirstOrDefault();
 
       if (entity == null)
       {
@@ -61,14 +61,14 @@ namespace GroceryListAPI.Controllers.odata
       return Updated(entity);
     }
 
-    public async Task<IActionResult> Post([FromBody] GroceryItem model)
+    public async Task<IActionResult> Post([FromBody] GroceryList model)
     {
       if (!ModelState.IsValid)
       {
         return BadRequest(ModelState);
       }
 
-      _dbContext.GroceryItems.Add(model);
+      _dbContext.GroceryLists.Add(model);
       try
       {
         await _dbContext.SaveChangesAsync();
@@ -81,14 +81,14 @@ namespace GroceryListAPI.Controllers.odata
       return Created(model);
     }
 
-    public async Task<IActionResult> Put([FromODataUri] Guid key, [FromBody] GroceryItem update)
+    public async Task<IActionResult> Put([FromODataUri] Guid key, [FromBody] GroceryList update)
     {
       if (!ModelState.IsValid)
       {
         return BadRequest(ModelState);
       }
 
-      if (key != update.GroceryItemId)
+      if (key != update.GroceryListId)
       {
         return BadRequest();
       }
@@ -102,7 +102,7 @@ namespace GroceryListAPI.Controllers.odata
 
     public async Task<IActionResult> Delete([FromODataUri] Guid key)
     {
-      var entity = await _dbContext.GroceryItems.FindAsync(key);
+      var entity = await _dbContext.GroceryLists.FindAsync(key);
       if (entity == null)
       {
         return NotFound();

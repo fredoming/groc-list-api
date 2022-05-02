@@ -117,8 +117,8 @@ namespace GroceryListAPI
       app.UseCors();
       app.UseRouting();
 
-      app.UseAuthorization();
-      app.UseAuthentication();
+      //app.UseAuthorization();
+      //app.UseAuthentication();
 
       app.UseEndpoints(endpoints =>
       {
